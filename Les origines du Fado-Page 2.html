@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Le Fado populaire de Lisbonne</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- Styles spécifiques à la page populaire.html --- */
+
+      /* En-tête fixe (comme sur origines.html) */
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center bottom; /* Centre l'image mais la pousse vers le bas si besoin */
+      }
+
+      /* Titres de section */
+      h1,
+      h2 {
+        text-align: left !important;
+        margin-left: 8% !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      h1 {
+        margin-top: 50px;
+        font-size: 2.8em;
+      }
+      h2 {
+        margin-top: 60px;
+        font-size: 2.2em;
+        border-bottom: 2px solid rgba(124, 63, 42, 0.2); /* Petit séparateur pour les sections */
+        padding-bottom: 10px;
+        max-width: 84%; /* Pour que le trait ne dépasse pas le texte */
+        margin-right: 8%;
+      }
+
+      /* Contenu principal de la page */
+      .page-content {
+        max-width: 1000px;
+        margin: 0 auto 80px auto;
+        padding: 0 20px;
+      }
+
+      .intro-texte {
+        max-width: 850px;
+        /* Aligné pile sur le retrait du titre h1 */
+        margin-left: 0.5% !important;
+        margin-right: 2%;
+
+        /* Espace entre le titre et le texte */
+        margin-top: 10px;
+        margin-bottom: 60px;
+
+        line-height: 1.8;
+        font-size: 1.15rem;
+
+        /* Force l'alignement du texte à gauche */
+        text-align: left !important;
+        color: #444;
+      }
+      /* Bloc pour chaque "profil" de fadista */
+      .profil-fadista {
+        display: flex;
+        align-items: center;
+        margin-bottom: 70px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        overflow: hidden; /* Pour les bordures arrondies */
+      }
+
+      /* Alternance : image à droite, texte à gauche pour un bloc sur deux */
+      .profil-fadista:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .profil-fadista-texte {
+        flex: 1; /* Prend l'espace restant */
+        padding: 40px;
+        font-family: "Times New Roman", serif;
+      }
+
+      .profil-fadista-texte h3 {
+        color: #5e2f1f;
+        margin-top: 0;
+        font-size: 1.6em;
+        text-align: left;
+        margin-bottom: 15px;
+      }
+
+      .profil-fadista-texte p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        text-align: left;
+      }
+
+      .profil-fadista-image {
+        flex-shrink: 0; /* Empêche l'image de rétrécir */
+        width: 40%; /* L'image prend 40% de la largeur du bloc */
+        height: 350px; /* Hauteur fixe pour toutes les images de profil */
+        overflow: hidden;
+      }
+
+      .profil-fadista-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Section pour le lexique */
+      .lexique-fado {
+        background-color: #f5ebe0; /* Fond légèrement différent pour le lexique */
+        padding: 50px 0;
+        margin-top: 80px;
+        text-align: center;
+        border-top: 1px solid rgba(124, 63, 42, 0.1);
+        border-bottom: 1px solid rgba(124, 63, 42, 0.1);
+      }
+
+      .lexique-fado h2 {
+        text-align: center !important;
+        margin-left: 0 !important;
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 40px;
+      }
+
+      .lexique-liste {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .lexique-item {
+        background-color: #7c3f2a;
+        color: white;
+        padding: 25px 35px;
+        border-radius: 10px;
+        text-align: left;
+        width: 280px; /* Largeur fixe pour chaque élément */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .lexique-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .lexique-item h4 {
+        margin-top: 0;
+        font-size: 1.4em;
+        color: #f8e7df; /* Couleur claire pour le titre du lexique */
+        margin-bottom: 10px;
+      }
+
+      .lexique-item p {
+        font-size: 0.95em;
+        line-height: 1.6;
+      }
+
+      /* Media queries pour adapter le design sur les petits écrans */
+      @media (max-width: 900px) {
+        h1 {
+          font-size: 2.2em;
+          margin-top: 30px;
+        }
+        h2 {
+          font-size: 1.8em;
+          margin-top: 40px;
+          margin-left: 20px !important;
+          max-width: calc(100% - 40px);
+        }
+        .intro-texte {
+          font-size: 1em;
+          margin-bottom: 40px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        .header-fixe {
+          height: 300px;
+        }
+        .page-content {
+          padding: 0 10px;
+        }
+
+        .profil-fadista,
+        .profil-fadista:nth-child(even) {
+          flex-direction: column; /* Tous les blocs s'empilent verticalement */
+        }
+
+        .profil-fadista-texte {
+          padding: 30px;
+        }
+        .profil-fadista-image {
+          width: 100%;
+          height: 250px;
+        }
+
+        .lexique-fado h2 {
+          margin-bottom: 30px;
+        }
+        .lexique-liste {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+        .lexique-item {
+          width: 90%; /* Prend plus de largeur sur mobile */
+          padding: 20px 30px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.8em;
+        }
+        h2 {
+          font-size: 1.5em;
+          margin-left: 15px !important;
+          max-width: calc(100% - 30px);
+        }
+        .intro-texte {
+          font-size: 0.95em;
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+        .header-fixe {
+          height: 250px;
+        }
+
+        .profil-fadista-texte {
+          padding: 25px;
+        }
+        .profil-fadista-texte h3 {
+          font-size: 1.4em;
+        }
+        .profil-fadista-texte p {
+          font-size: 0.9em;
+        }
+        .profil-fadista-image {
+          height: 200px;
+        }
+
+        .lexique-item {
+          width: 95%;
+          padding: 15px 20px;
+        }
+        .lexique-item h4 {
+          font-size: 1.2em;
+        }
+        .lexique-item p {
+          font-size: 0.85em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img
+        src="images/Bandeau Le Fado Populaire de Lisbonne.png"
+        alt="Le Fado populaire de Lisbonne"
+      />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li>
+              <a href="rue.html">De la rue à la scène</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li>
+              <a href="ton.html">Le ton du Fado : l'art de la Saudade</a>
+            </li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li>
+              <a href="guitare.html">La guitarra: emblème du Fado</a>
+            </li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : petit voyage à travers l'histoire des
+                images
+              </a>
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : une immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Le Fado populaire de Lisbonne</h1>
+      <div class="page-content">
+        <div class="intro-texte">
+          <p>
+            Né dans les entrailles de Lisbonne, le Fado a été le miroir des âmes
+            populaires, un chant pour ceux dont la vie était tissée
+            d'incertitudes et de passions. Marins, prostituées, ouvriers,
+            déracinés des colonies... chacun a trouvé dans ses mélodies et ses
+            paroles un écho à son propre destin. Cette page explore les visages
+            et les récits de ces hommes et de ces femmes qui ont fait vibrer le
+            cœur du Fado.
+          </p>
+        </div>
+
+        <h2>Les voix des oubliés et des passionnés</h2>
+
+        <div class="profil-fadista">
+          <div class="profil-fadista-texte">
+            <h3>Les Marins et les Ports</h3>
+            <p>
+              Le Fado est indissociable des ports de Lisbonne. Les marins,
+              confrontés à la séparation, à la nostalgie du foyer et aux dangers
+              de l'océan, ont été parmi les premiers à exprimer leur "saudade" à
+              travers ce chant. Leurs mélodies racontaient les voyages
+              lointains, les amours laissées derrière et l'incertitude du
+              retour. Le Fado est né de leurs adieux et de leurs retrouvailles
+              éphémères.
+            </p>
+          </div>
+          <div class="profil-fadista-image">
+            <img
+              src="images/placeholder-marins-fado.jpg"
+              alt="Marins chantant du Fado"
+            />
+          </div>
+        </div>
+
+        <div class="profil-fadista">
+          <div class="profil-fadista-texte">
+            <h3>Les Âmes de la Nuit : Prostituées et Bandits</h3>
+            <p>
+              Dans les ruelles sombres de l'Alfama et de la Mouraria, le Fado a
+              aussi trouvé refuge auprès des figures marginales. Les prostituées
+              y chantaient leur sort, leur beauté éphémère et leurs chagrins,
+              tandis que les bandits exprimaient leur défi, leur destin tragique
+              et leur rébellion. Ce Fado des bas-fonds, brut et intense, était
+              le reflet d'une vie sans fard, où l'émotion était reine.
+            </p>
+          </div>
+          <div class="profil-fadista-image">
+            <img
+              src="images/placeholder-nuit-fado.jpg"
+              alt="Scène de fado dans un quartier populaire"
+            />
+          </div>
+        </div>
+
+        <div class="profil-fadista">
+          <div class="profil-fadista-texte">
+            <h3>Les Déracinés et le Cosmopolitisme Lisboète</h3>
+            <p>
+              Lisbonne, ville portuaire et carrefour d'échanges, a vu affluer
+              des populations diverses : des colons revenus d'Afrique ou du
+              Brésil, des immigrants venus chercher fortune. Chacun, avec ses
+              propres histoires de perte, de nostalgie et d'espoir, a contribué
+              à enrichir le Fado, en faisant un chant cosmopolite qui mélangeait
+              les influences et les douleurs universelles. Le Fado est devenu la
+              bande-son de cette diversité humaine.
+            </p>
+          </div>
+          <div class="profil-fadista-image">
+            <img
+              src="images/placeholder-cosmopolite-fado.jpg"
+              alt="Foule diverse à Lisbonne"
+            />
+          </div>
+        </div>
+
+        <div class="profil-fadista">
+          <div class="profil-fadista-texte">
+            <h3>Amours Perdues et Destins Tragiques</h3>
+            <p>
+              Au-delà des profils sociaux, le Fado est avant tout le chant de
+              l'émotion pure : la perte d'un amour, la nostalgie d'un passé
+              révolu, la complainte face à un destin cruel. C'est le cri du cœur
+              des "âmes déchues", de ceux qui se sentent persécutés par la
+              fatalité. Chaque note et chaque mot sont imprégnés de cette
+              mélancolie universelle qui rend le Fado si profondément humain et
+              intemporel.
+            </p>
+          </div>
+          <div class="profil-fadista-image">
+            <img
+              src="images/placeholder-amour-fado.jpg"
+              alt="Fadista chantant l'amour perdu"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="lexique-fado">
+        <h2>Petit lexique des mots clés du Fado</h2>
+        <div class="lexique-liste">
+          <div class="lexique-item">
+            <h4>Guitarrada</h4>
+            <p>
+              Performance instrumentale de guitare portugaise, souvent sans
+              chant. Elle met en lumière la virtuosité des musiciens.
+            </p>
+          </div>
+          <div class="lexique-item">
+            <h4>Desgarrada</h4>
+            <p>
+              Duel musical improvisé entre deux fadistas ou instrumentistes, où
+              chacun tente de surpasser l'autre avec humour et habileté.
+            </p>
+          </div>
+          <div class="lexique-item">
+            <h4>Fadista</h4>
+            <p>
+              Le chanteur ou la chanteuse de Fado. Terme qui désigne
+              l'interprète passionné qui donne vie aux paroles et à la mélodie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+      <p>
+        Contact :
+        <a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
+      </p>
+    </footer>
+  </body>
+</html>

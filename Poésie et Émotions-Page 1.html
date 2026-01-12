@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Le ton du Fado : l'art de la Saudade</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- Styles spécifiques à la page ton.html --- */
+
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2,
+      h3 {
+        text-align: left !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+      h1 {
+        margin-left: 8% !important;
+        margin-top: 50px;
+        font-size: 3em;
+      }
+
+      h2 {
+        margin-left: 8% !important;
+        margin-top: 60px;
+        font-size: 2.2em;
+        font-style: italic;
+        font-weight: 300;
+        border-bottom: 1px solid #7c3f2a;
+        display: inline-block;
+        padding-right: 50px;
+      }
+
+      .intro-texte {
+        max-width: 900px;
+        margin-left: 8% !important;
+        margin-right: 8%;
+        margin-top: 25px;
+        margin-bottom: 60px;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: left;
+        color: #444;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      /* Section Saudade : Blocs originaux */
+      .container-poesie {
+        display: flex;
+        padding: 0 8% 80px 8%;
+        gap: 60px;
+        align-items: flex-start;
+      }
+
+      .bloc-definition {
+        flex: 1;
+        background: #fffaf5;
+        padding: 40px;
+        border-left: 3px solid #7c3f2a;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .image-evocation {
+        flex: 1;
+        text-align: center;
+      }
+
+      .image-evocation img {
+        width: 100%;
+        border-radius: 4px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Section Richesse Littéraire & Parallèle */
+      .section-litteraire {
+        padding: 60px 8%;
+        background-color: #fcfcfc;
+      }
+
+      .grille-litteraire {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      .cadre-photo {
+        text-align: center;
+      }
+      .cadre-photo img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      /* Blocs Parallèles Citation / Traduction */
+      .container-traduction {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .bloc-langue {
+        padding: 30px;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .bloc-langue h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .ver-texte {
+        font-style: italic;
+        line-height: 1.6;
+        color: #5e2f1f;
+        font-size: 1.1em;
+      }
+
+      .explication {
+        margin-top: 20px;
+        font-size: 0.95em;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        color: #666;
+      }
+
+      /* Lecteur Audio */
+      .lecteur-audio-container {
+        margin-top: 40px;
+        padding: 30px;
+        background: #7c3f2a;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+      }
+
+      .lecteur-audio-container h3 {
+        color: white !important;
+        margin-bottom: 20px;
+        text-align: center !important;
+      }
+
+      audio {
+        width: 100%;
+        max-width: 600px;
+        filter: sepia(20%) brightness(95%);
+      }
+
+      @media (max-width: 900px) {
+        .container-poesie,
+        .grille-litteraire,
+        .container-traduction {
+          grid-template-columns: 1fr;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img src="images/Bandeau Le ton du Fado.png" alt="La poésie du Fado" />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li>
+              <a href="rue.html">De la rue à la scène</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li>
+              <a href="ton.html">Le ton du Fado : l'art de la Saudade</a>
+            </li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li>
+              <a href="guitare.html">La guitarra: emblème du Fado</a>
+            </li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : petit voyage à travers l'histoire des
+                images
+              </a>
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : une immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Le ton du Fado : l'art de la Saudade</h1>
+
+      <div class="intro-texte">
+        <p>
+          Au-delà de la mélodie, le Fado est une littérature chantée. On ne
+          "pousse pas la chansonnette" dans le Fado ; on déclame, on confesse,
+          on exprime l'inexprimable. Au cœur de ce ton si particulier se trouve
+          un mot intraduisible, un sentiment qui définit l'âme portugaise : la
+          <strong>Saudade</strong>.
+        </p>
+      </div>
+
+      <div class="container-poesie">
+        <div class="bloc-definition">
+          <h2>Qu'est-ce que la Saudade ?</h2>
+          <p>
+            Ce n'est pas simplement de la nostalgie. C'est un mélange complexe
+            de regret, d'espoir, d'absence et de présence. Dans le Fado, la
+            Saudade est le ton fondamental. Elle s'exprime par des silences
+            prolongés, des inflexions de voix qui semblent se briser, et une
+            poésie qui sublime la douleur.
+          </p>
+        </div>
+        <div class="image-evocation">
+          <img
+            src="images/evocation-saudade.jpg"
+            alt="Visage exprimant le fado"
+          />
+          <p style="font-style: italic; margin-top: 10px; color: #666">
+            Visage d'un fadista exprimant l'intensité du fado.
+          </p>
+        </div>
+      </div>
+
+      <section class="section-litteraire">
+        <h2>La richesse du Fado : un art littéraire</h2>
+        <div
+          class="intro-texte"
+          style="margin-left: 0 !important; max-width: 100%"
+        >
+          <p>
+            Le Fado est indissociable de la grande littérature portugaise. Les
+            textes ne sont pas de simples paroles de chansons, mais de
+            véritables poèmes où chaque mot est choisi pour sa résonance
+            émotionnelle.
+          </p>
+        </div>
+
+        <div class="grille-litteraire">
+          <div class="cadre-photo">
+            <img src="images/mur-fado.jpg" alt="Poésie sur un mur" />
+            <p style="font-style: italic; margin-top: 10px; color: #666">
+              Un mur de Lisbonne où la poésie du Fado s'inscrit dans la pierre.
+            </p>
+          </div>
+          <div class="cadre-photo">
+            <img src="images/partition.jpg" alt="Partition de fado" />
+            <p style="font-style: italic; margin-top: 10px; color: #666">
+              Partition originale : le verbe traduit en notes de musique.
+            </p>
+          </div>
+        </div>
+
+        <h2>L'Âme des Vers</h2>
+        <div class="container-traduction">
+          <div class="bloc-langue">
+            <h3>Original (Português)</h3>
+            <p class="ver-texte">
+              "O Fado nasceu um dia,<br />
+              Quando o vento não soprava,<br />
+              E o céu estava em brasa,<br />
+              Nasceu da mágoa de um coração."
+            </p>
+          </div>
+
+          <div class="bloc-langue">
+            <h3>Traduction & Sens</h3>
+            <p class="ver-texte">
+              "Le Fado est né un jour,<br />
+              Quand le vent ne soufflait pas,<br />
+              Et que le ciel était de braise,<br />
+              Il est né de la peine d'un cœur."
+            </p>
+            <div class="explication">
+              <strong>Explication :</strong> Cette strophe illustre la naissance
+              mythique du chant. Le silence du vent et le ciel brûlant préparent
+              l'éclosion d'une plainte qui vient directement du cœur.
+            </div>
+          </div>
+        </div>
+
+        <div class="lecteur-audio-container">
+          <h3>Écouter l'interprétation</h3>
+          <audio controls>
+            <source src="audio/fado-traditionnel.mp3" type="audio/mpeg" />
+            Votre navigateur ne supporte pas l'élément audio.
+          </audio>
+          <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9">
+            Extrait : Fado Menor (Traditionnel)
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+    </footer>
+  </body>
+</html>

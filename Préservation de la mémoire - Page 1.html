@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Objets et Costumes - Archives du Fado</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- STYLE GLOBAL --- */
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background-color: rgb(248, 231, 223);
+        color: #333;
+        scroll-behavior: smooth;
+      }
+
+      .header-fixe {
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+      }
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* --- NAVIGATION --- */
+      nav {
+        background-color: rgba(248, 231, 223, 0.9);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(124, 63, 42, 0.2);
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      nav li {
+        position: relative;
+      }
+      nav a {
+        display: block;
+        color: #444;
+        text-decoration: none;
+        padding: 20px 15px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      nav li ul {
+        display: none;
+        position: absolute;
+        background-color: #7c3f2a;
+        min-width: 250px;
+        border-radius: 0 0 8px 8px;
+      }
+      nav li:hover ul {
+        display: block;
+      }
+      nav li ul li a {
+        color: white;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      nav a:hover {
+        color: #7c3f2a;
+      }
+
+      /* --- TYPOGRAPHIE ET TEXTES --- */
+      h1,
+      h2 {
+        text-align: left !important;
+        margin-left: 8% !important;
+        color: #7c3f2a;
+      }
+      h1 {
+        margin-top: 50px;
+        font-size: 3em;
+        letter-spacing: -1px;
+      }
+      h2 {
+        margin-top: 70px;
+        font-size: 2.2em;
+        border-bottom: 2px solid #7c3f2a;
+        padding-bottom: 10px;
+        margin-right: 8%;
+      }
+
+      .intro-page,
+      .texte-documentaire {
+        max-width: 84%;
+        margin: 30px auto;
+        font-size: 1.15rem;
+        line-height: 1.9;
+        text-align: justify;
+      }
+      .texte-documentaire strong {
+        color: #7c3f2a;
+      }
+
+      /* --- CONTENEUR D'IMAGE ZOOM + CLIC --- */
+      .img-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        cursor: zoom-in;
+        background: #000;
+      }
+      .img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s;
+      }
+      .img-container:hover img {
+        transform: scale(1.1);
+        opacity: 0.9;
+      }
+
+      .copyright-label {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 4px 10px;
+        border-radius: 20px;
+        z-index: 5;
+      }
+
+      /* --- POINTS INTERACTIFS --- */
+      .point-interactif {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: #7c3f2a;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        z-index: 10;
+      }
+      .point-interactif:hover::after {
+        content: attr(data-info);
+        position: absolute;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        width: 220px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        z-index: 100;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      /* --- GRILLES --- */
+      .grille-images-fado {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      .ligne-du-haut {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+      .cadre-triptyque {
+        height: 450px;
+      }
+
+      .galerie-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        width: 84%;
+        margin: 40px auto;
+      }
+      .cadre-galerie {
+        height: 350px;
+      }
+
+      .section-art {
+        background-color: #fff;
+        padding: 60px 0;
+      }
+      .section-livres {
+        background-color: rgb(248, 231, 223);
+        padding: 60px 0;
+      }
+
+      /* --- LIGHTBOX (IMAGE EN GRAND) --- */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 85%;
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      }
+      .lightbox:target {
+        display: flex;
+      }
+      .close-lightbox {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        color: white;
+        font-size: 50px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      footer {
+        background-color: #2c2c2c;
+        color: #f8e7df;
+        text-align: center;
+        padding: 40px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img src="images/Bandeau Objets et costumes.png" alt="Bandeau Fado" />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li><a href="rue.html">De la rue à la scène</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li><a href="ton.html">Le ton du Fado : l'art de la Saudade</a></li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li><a href="guitare.html">La guitarra: emblème du Fado</a></li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li><a href="archives-papiers.html">Le Fado au fil du temps</a></li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Objets et Costumes : L'empreinte visuelle</h1>
+
+      <section class="intro-page">
+        <p>
+          Au-delà de la performance vocale, le Fado s'est construit une
+          <strong>identité visuelle forte</strong>. À travers les siècles,
+          certains objets sont passés du statut d'accessoires utilitaires à
+          celui d'icônes culturelles et visuelles. Explorons comment le
+          vêtement, l'instrument et l'art urbain s'unissent pour former le
+          "corps physique" du Fado.
+        </p>
+      </section>
+
+      <h2>La Tenue des Fadistas</h2>
+      <div class="texte-documentaire">
+        <p>
+          La silhouette de la fadiste est immédiatement reconnaissable. Héritée
+          des classes populaires et du deuil permanent des quartiers maritimes,
+          la <strong>robe noire</strong> n'est pas un simple choix esthétique,
+          mais un symbole de respect envers la tragédie racontée. Le
+          <strong>Xaile (châle)</strong>, autrefois porté pour se protéger du
+          froid dans les tavernes du port, est devenu l'extension émotionnelle
+          de la chanteuse : elle s'y drape, s'y cache ou l'ouvre comme pour
+          offrir son cœur au public.
+        </p>
+      </div>
+
+      <section class="grille-images-fado">
+        <div class="ligne-du-haut">
+          <a href="#img1" class="img-container cadre-triptyque">
+            <img src="images/Costume du fado.jpeg" alt="Costume 1" />
+            <span class="copyright-label">© Musée du Fado</span>
+            <div
+              class="point-interactif"
+              style="top: 50%; left: 30%"
+              data-info="Le voile noir : Objet de recueillement et de mystère."
+            ></div>
+            <div
+              class="point-interactif"
+              style="top: 20%; left: 60%"
+              data-info="Variante de scène : Le rouge symbolise la passion ardente."
+            ></div>
+          </a>
+          <a href="#img2" class="img-container cadre-triptyque">
+            <img src="images/Fadista.jpeg" alt="Costume 2" />
+            <span class="copyright-label">© Archives Nationales</span>
+            <div
+              class="point-interactif"
+              style="top: 80%; left: 15%"
+              data-info="La Guitarra : Sa forme en poire est unique au Portugal."
+            ></div>
+            <div
+              class="point-interactif"
+              style="top: 80%; left: 92%"
+              data-info="Voile artistique : Modernisation de l'image de la fadiste."
+            ></div>
+            <div
+              class="point-interactif"
+              style="top: 40%; left: 80%"
+              data-info="Noblesse du noir : Reflet du Fatum (destin)."
+            ></div>
+          </a>
+        </div>
+        <a href="#img3" class="img-container">
+          <img src="images/Le groupe dans le fado.jpeg" alt="Groupe" />
+          <span class="copyright-label">© Collection Privée</span>
+          <div
+            class="point-interactif"
+            style="top: 25%; left: 50%"
+            data-info="La robe longue et colorée : Accentue la verticalité et la prestance."
+          ></div>
+          <div
+            class="point-interactif"
+            style="top: 70%; left: 45%"
+            data-info="Le Châle : Indissociable de la gestuelle dramatique de la fadista."
+          ></div>
+          <div
+            class="point-interactif"
+            style="top: 40%; left: 85%"
+            data-info="Viola : Indispensable base harmonique."
+          ></div>
+          <div
+            class="point-interactif"
+            style="top: 60%; left: 15%"
+            data-info="Guitarra Portuguesa : Cordes en acier pour un son brillant."
+          ></div>
+          <div
+            class="point-interactif"
+            style="top: 80%; left: 30%"
+            data-info="Posture du musicien : Retrait et concentration extrême."
+          ></div>
+        </a>
+      </section>
+
+      <section class="section-art">
+        <h2>L'art du Fado lisboète : muralisme et statues</h2>
+        <div class="texte-documentaire">
+          <p>
+            À Lisbonne, le Fado ne reste pas confiné dans les "Casas de Fado".
+            Il envahit l'espace public à travers le <strong>Street Art</strong>,
+            transformant les façades décrépies en hommages monumentaux. De la
+            fresque en azulejos d'Amália Rodrigues aux statues de bronze qui
+            peuplent les belvédères (miradouros), la ville elle-même devient un
+            musée à ciel ouvert où le marcheur croise le regard des légendes
+            disparues.
+          </p>
+        </div>
+        <div class="galerie-images">
+          <a href="#img4" class="img-container cadre-galerie">
+            <img src="images/Muralisme fado.jpg" alt="Muralisme" />
+            <span class="copyright-label">© Street Art Lisbon</span>
+          </a>
+          <a href="#img5" class="img-container cadre-galerie">
+            <img src="images/Statues fado.jpg" alt="Statue 1" />
+            <span class="copyright-label">© Lisbonne Tourisme</span>
+          </a>
+          <a href="#img6" class="img-container cadre-galerie">
+            <img src="images/Statues de Fado.jpg" alt="Statue 2" />
+            <span class="copyright-label">© Archives Ville</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-livres">
+        <h2>Littérature et décor de vie</h2>
+        <div class="texte-documentaire">
+          <p>
+            Le rayonnement du Fado passe aussi par sa proportion à toucher
+            d'autres formes d'arts comme
+            <strong>
+              la culture littéraire, la culture statuaire, le muralisme
+            </strong>
+            et tout autre aspect décoratif traditionnel que l'on peut retrouver
+            dans les ruelles portugaises. Les "Casas de Fado" conservent une
+            atmosphère intime où les bois sombres, les azulejos colorés et les
+            partitions originales créent une bulle hors du temps. A cela
+            s'ajoute l'aspect poétique qui fascine la littérature portugaise. Le
+            Fado est un art qui captive l'attention, il fait partie de la
+            culture nationale d'un pays mais il a aussi captivé le regard
+            extérieur. Depuis 2011, le Fado fait partie du Patrimoine mondial de
+            l'Unesco. Chaque année de plus en plus de touristes entrent dans ses
+            "casas do Fado" et ressortent avec la sensation d'avoir découvert un
+            nouvelle aspect de la culture portugaise. Culture qui dépasse chaque
+            année les frontières du POrtugal et qui séduit un public
+            international toujours plus large. Le Fado est un art vivant, en
+            constante évolution, qui continue de fasciner et d'inspirer des
+            générations entières des plus petits au plus grands, mention
+            spéciale à : la nouvelle sortie du livre Astérix " Lusitanie" sur le
+            Portugal en 2025.
+          </p>
+        </div>
+        <div class="galerie-images">
+          <a href="#img7" class="img-container cadre-galerie">
+            <img src="images/Asterix.jpeg" alt="Livre" />
+            <span class="copyright-label">© Biblio Portugal</span>
+          </a>
+          <a href="#img8" class="img-container cadre-galerie">
+            <img src="images/Cafe fado.jpg" alt="Café" />
+            <span class="copyright-label">© Casa Severa</span>
+          </a>
+          <a href="#img9" class="img-container cadre-galerie">
+            <img src="images/cafe fado .jpeg" alt="Boutique" />
+            <span class="copyright-label">© Commerce Traditionnel</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <div id="img1" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Costume du fado.jpeg" />
+    </div>
+    <div id="img2" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Fadista.jpeg" />
+    </div>
+    <div id="img3" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Le groupe dans le fado.jpeg" />
+    </div>
+    <div id="img4" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Muralisme fado.jpg" />
+    </div>
+    <div id="img5" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Statues fado.jpg" />
+    </div>
+    <div id="img6" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Statues de Fado.jpg" />
+    </div>
+    <div id="img7" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Livre-Fado.jpg" />
+    </div>
+    <div id="img8" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/Cafe fado.jpg" />
+    </div>
+    <div id="img9" class="lightbox">
+      <a href="#" class="close-lightbox">&times;</a
+      ><img src="images/cafe fado .jpeg" />
+    </div>
+
+    <footer>
+      <p>
+        © 2025 — Archives du Fado | Recherche Universitaire sur le Patrimoine
+        Portugais
+      </p>
+    </footer>
+  </body>
+</html>

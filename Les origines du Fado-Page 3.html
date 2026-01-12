@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>De la rue à la scène - Histoire et Évolution</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- Styles spécifiques à la page rue.html --- */
+
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2,
+      h3 {
+        text-align: left !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+      h1 {
+        margin-left: 8% !important;
+        margin-top: 50px;
+        font-size: 3em;
+      }
+      h2 {
+        margin-left: 8% !important;
+        margin-top: 60px;
+        font-size: 2.2em;
+        border-left: 5px solid #7c3f2a;
+        padding-left: 15px;
+      }
+
+      .intro-texte {
+        max-width: 900px;
+        margin-left: 8% !important;
+        margin-right: 8%;
+        margin-top: 25px;
+        margin-bottom: 60px;
+        line-height: 1.9;
+        font-size: 1.2rem;
+        text-align: left;
+        color: #333;
+        font-family: "Times New Roman", serif;
+      }
+
+      /* SECTION SALAZAR ET CENSURE */
+      .section-sombre {
+        background-color: #2c2c2c;
+        color: #ddd;
+        padding: 80px 8%;
+        margin-top: 60px;
+      }
+      .section-sombre h2 {
+        color: #f8e7df;
+        border-left-color: #f8e7df;
+        margin-left: 0 !important;
+      }
+
+      .layout-archives {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 30px;
+      }
+
+      .grille-archives-documents {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .document-cadre {
+        background: #444;
+        padding: 10px;
+        border: 1px solid #555;
+        text-align: center;
+      }
+      .document-cadre img {
+        width: 100%;
+        filter: grayscale(100%);
+        transition: 0.4s;
+      }
+      .document-cadre img:hover {
+        filter: grayscale(0%);
+      }
+
+      /* SECTION LIBÉRATION (TRIPTYQUE) */
+      .section-claire {
+        padding: 80px 8%;
+        background-color: #f8e7df;
+      }
+
+      .triptyque-liberation {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        margin: 40px 0;
+      }
+      .triptyque-liberation img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* SECTION MONDIALISATION */
+      .mondialisation-container {
+        padding: 60px 8%;
+        background: white;
+        border-radius: 50px 50px 0 0;
+        margin-top: -30px;
+        position: relative;
+        z-index: 10;
+      }
+      .hashtags {
+        margin-top: 30px;
+      }
+      .badge-style {
+        display: inline-block;
+        background: #7c3f2a;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.9em;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      @media (max-width: 1024px) {
+        .layout-archives,
+        .triptyque-liberation {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img
+        src="images/Bandeau De la rue à la scène (praca do comercio).png"
+        alt="Evolution du Fado"
+      />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li><a href="rue.html">De la rue à la scène</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li><a href="ton.html">Le ton du Fado : l'art de la Saudade</a></li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li><a href="guitare.html">La guitarra: emblème du Fado</a></li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : archives visuelles</a
+              >
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>De la rue à la scène</h1>
+
+      <div class="intro-texte">
+        <p>
+          L’histoire du Fado ne peut être dissociée des turbulences politiques
+          du Portugal. Si le XIXe siècle a vu naître le Fado dans la marginalité
+          des bas-fonds lisboètes, le XXe siècle l’a contraint à une mutation
+          profonde. Entre 1926 et 1974, le genre a dû naviguer sous les vents
+          contraires de la dictature de l’Estado Novo. Initialement chant de
+          révolte et de débauche, il est devenu, par la force de la loi et de la
+          radio, un symbole national institutionnalisé. Cette transition "de la
+          rue à la scène" n'est pas qu'un changement de lieu, c'est un
+          changement de statut : le passage d'un folklore spontané à un art
+          codifié, surveillé, puis enfin libéré par la Révolution des Œillets.
+        </p>
+      </div>
+
+      <section class="section-sombre">
+        <h2>La mainmise de l'Estado Novo (1933-1974)</h2>
+        <div class="layout-archives">
+          <div class="texte-col">
+            <p>
+              Sous la dictature d’António de Oliveira Salazar, le Fado subit un
+              paradoxe. D’un côté, le régime se méfie de son origine "canaille"
+              et de son lien avec les milieux de la prostitution et de la
+              criminalité. De l’autre, il comprend que ce chant touche au cœur
+              de l’identité portugaise.
+            </p>
+            <p>
+              <strong>La loi de 1927 sur les licences :</strong> Désormais,
+              aucun fadista ne peut chanter sans une carte professionnelle
+              délivrée par l’État. Les paroles doivent être soumises à la
+              "Commission de Censure". On retire la critique sociale, la plainte
+              politique, pour les remplacer par une mélancolie plus abstraite et
+              moralement acceptable.
+            </p>
+            <p>
+              C'est aussi l'époque où le Fado entre dans les "Casas de Fado" de
+              luxe. Le décor se fige : le silence devient obligatoire, le châle
+              noir devient un uniforme, et l'interprétation se théâtralise pour
+              les caméras de l'époque.
+            </p>
+          </div>
+          <div class="grille-archives-documents">
+            <div class="document-cadre">
+              <img
+                src="images/archive-licence-chant.jpg"
+                alt="Licence de chant 1930"
+              />
+              <p>Licence de chant (1934)</p>
+            </div>
+            <div class="document-cadre">
+              <img
+                src="images/archive-censure-tampon.jpg"
+                alt="Document censuré"
+              />
+              <p>Paroles censurées</p>
+            </div>
+            <div class="document-cadre">
+              <img src="images/salazar-radio.jpg" alt="Radio portugaise" />
+              <p>L'essor de la radio d'État</p>
+            </div>
+            <div class="document-cadre">
+              <img src="images/fado-officiel.jpg" alt="Fado institutionnel" />
+              <p>Le Fado "propre" du régime</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-claire">
+        <h2>25 Avril 1974 : Le chant de la rupture</h2>
+        <div
+          class="intro-texte"
+          style="margin-left: 0 !important; max-width: 100%"
+        >
+          <p>
+            Le 25 avril 1974, la Révolution des Œillets renverse la dictature.
+            Dans un premier temps, le Fado est boudé, injustement associé à
+            l'ancien régime. Mais très vite, une nouvelle génération s'approprie
+            cet héritage pour en faire un cri de liberté. Les poètes interdits
+            entrent enfin dans le répertoire des fadistas.
+          </p>
+        </div>
+
+        <div class="triptyque-liberation">
+          <img
+            src="images/revolte-1.jpg"
+            alt="Fado dans la rue après la révolution"
+          />
+          <img src="images/revolte-2.jpg" alt="Poètes du fado libre" />
+          <img src="images/revolte-3.jpg" alt="Nouvelle mise en scène" />
+        </div>
+
+        <div
+          class="intro-texte"
+          style="margin-left: 0 !important; max-width: 100%"
+        >
+          <p>
+            Cette période voit l'éclatement des structures classiques. On ne
+            chante plus seulement la fatalité, on chante l'espoir et la
+            reconstruction. C’est le moment où le Fado sort définitivement de
+            son carcan traditionnel pour explorer de nouvelles voies musicales,
+            jetant les ponts vers d'autres styles comme le Rock.
+          </p>
+        </div>
+      </section>
+
+      <section class="mondialisation-container">
+        <h2>Mondialisation et Évolution contemporaine</h2>
+        <p
+          class="intro-texte"
+          style="margin-left: 0 !important; max-width: 100%"
+        >
+          Aujourd'hui, le Fado est un genre "monde". Il ne s'écoute plus
+          seulement dans l'Alfama, mais remplit les salles du monde entier.
+          Cette ouverture a permis des mélanges autrefois impensables : voix de
+          la Saudade et guitares électriques s'unissent pour une fusion moderne.
+        </p>
+        <div class="hashtags">
+          <span class="badge-style">#FadoFusion</span>
+          <span class="badge-style">#ElectricFado</span>
+          <span class="badge-style">#WorldMusic</span>
+          <span class="badge-style">#RockAndSaudade</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+    </footer>
+  </body>
+</html>

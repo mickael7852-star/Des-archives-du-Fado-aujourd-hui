@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>L'art de l'interprétation : du Stilo à la Modernité</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- Styles globaux et Header --- */
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2,
+      h3 {
+        text-align: left !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+      h1 {
+        margin-left: 8% !important;
+        margin-top: 50px;
+        font-size: 3em;
+      }
+      h2 {
+        margin-left: 8% !important;
+        margin-top: 60px;
+        font-size: 2.2em;
+        font-style: italic;
+        font-weight: 300;
+        border-bottom: 1px solid #7c3f2a;
+        display: inline-block;
+        padding-right: 50px;
+      }
+
+      .intro-texte {
+        max-width: 900px;
+        margin-left: 8% !important;
+        margin-right: 8%;
+        margin-top: 25px;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        color: #444;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      /* Section Technique */
+      .container-chant {
+        display: flex;
+        padding: 0 8% 60px 8%;
+        gap: 60px;
+        align-items: flex-start;
+      }
+      .bloc-technique {
+        flex: 1;
+        background: #fffaf5;
+        padding: 40px;
+        border-left: 3px solid #7c3f2a;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+        overflow: hidden; /* Pour contenir le flottement de l'image */
+      }
+
+      /* Style pour l'image "Une fadista et sa guitare" à côté du texte */
+      .image-petite {
+        float: right;
+        width: 280px; /* Taille réduite */
+        margin-left: 25px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* --- SECTION GRANDES VOIX --- */
+      .section-voix-videos {
+        padding: 80px 8%;
+        background-color: #ffffff;
+      }
+      .artiste-presentation {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+        margin-bottom: 120px;
+      }
+      .artiste-presentation.inverse {
+        flex-direction: row-reverse;
+      }
+
+      .texte-artiste {
+        flex: 1;
+      }
+      .texte-artiste p {
+        line-height: 1.9;
+        color: #444;
+        margin-top: 0;
+      }
+
+      .bloc-video-fixe {
+        flex: 0 0 60%;
+        min-width: 500px;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .legende-video {
+        margin-top: 15px;
+        border-left: 3px solid #7c3f2a;
+        padding-left: 15px;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .legende-video strong {
+        color: #7c3f2a;
+        display: block;
+        font-size: 1.1em;
+      }
+      .legende-video em {
+        color: #666;
+        font-size: 0.95em;
+      }
+
+      /* Comparatif final */
+      .section-comparative {
+        padding: 80px 8%;
+        background-color: #f9f9f9;
+        border-top: 1px solid #eee;
+      }
+      .comparatif-video-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 40px 0;
+      }
+      .grille-comparaison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .colonne-evol {
+        background: white;
+        padding: 40px;
+        border-radius: 4px;
+        border: 1px solid #eee;
+      }
+      .label-epoque {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #7c3f2a;
+        letter-spacing: 2px;
+      }
+
+      @media (max-width: 1100px) {
+        .artiste-presentation,
+        .artiste-presentation.inverse {
+          flex-direction: column;
+        }
+        .bloc-video-fixe {
+          flex: 1 1 100%;
+          min-width: 100%;
+        }
+        .image-petite {
+          float: none;
+          width: 100%;
+          margin-left: 0;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img
+        src="images/Bandeau Le role du chant.png"
+        alt="L'interprétation du Fado"
+      />
+    </div>
+
+        <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li>
+              <a href="rue.html">De la rue à la scène</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li>
+              <a href="ton.html">Le ton du Fado : l'art de la Saudade</a>
+            </li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li>
+              <a href="guitare.html">La guitarra: emblème du Fado</a>
+            </li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : petit voyage à travers l'histoire des
+                images
+              </a>
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : une immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Le rôle du chant et de l'interprétation</h1>
+
+      <div class="intro-texte">
+        <p>
+          L'incarnation du chant par le corps et la voix est une mise à nu rituelle et perpétuelle dans le Fado. C'est ce que les
+          Portugais nomment "Stilo" , c'est à dire la manière d'habiter le texte, de le
+          sculpter par des inflexions qui semblent naître de la gorge même de
+          Lisbonne.
+        </p>
+      </div>
+
+      <section class="container-chant">
+        <div class="bloc-technique">
+          <h2>Le langage des émotions</h2>
+
+          <img
+            src="images/Une fadista et sa guitare.jpeg"
+            alt="Fadista"
+            class="image-petite"
+          />
+
+          <p>
+            Le "Stilo" repose sur une maîtrise absolue des "voltas", ces
+            ornementations vocales destinées à nuancer l'expression du regret.
+            Contrairement au chant classique, le fadista privilégie une vérité
+            du mot sur la justesse académique. La véritable prouesse réside dans
+            le rubato : cette liberté prise par rapport au métronome.
+          </p>
+          <p>
+            Le corps est immobile, les yeux clos, les épaules souvent couvertes
+            d'un châle noir. Cette ascèse physique concentre toute l'énergie
+            vers le visage et les mains, trahissant l'intensité de la lutte
+            intérieure qui se joue entre l'interprète et son destin.
+          </p>
+          <p>
+            Le silence est ici aussi important que le son ; il permet à la
+            tension de s'installer avant que le cri de la Saudade ne vienne
+            rompre l'équilibre fragile de la taverne.
+          </p>
+        </div>
+      </section>
+
+      <section class="section-voix-videos">
+        <h2>Les voix qui ont sculpté l'histoire</h2>
+
+        <div class="artiste-presentation">
+          <div class="texte-artiste">
+            <h3>Alfredo Marceneiro : Le patriarche</h3>
+            <p>
+              Alfredo Marceneiro incarne le fado "vrai", celui des tavernes de
+              l'Alfama. Maître de la division du temps, il imposait aux
+              guitaristes une écoute de chaque instant pour suivre ses
+              improvisations rythmiques.
+            </p>
+          </div>
+          <div class="bloc-video-fixe">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/S_8qC8N0j5k"
+                title="Alfredo Marceneiro"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="legende-video">
+              <strong>O Leilão (L'Enchère)</strong>
+              <em
+                >Une narration pure illustrant le style "parlé-chanté" de
+                Marceneiro.</em
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="artiste-presentation inverse">
+          <div class="texte-artiste">
+            <h3>Mariza : La puissance moderne</h3>
+            <p>
+              Figure de proue du fado contemporain, Mariza a porté le genre dans
+              les plus grandes salles mondiales, mêlant une technique vocale
+              chirurgicale à une présence scénique spectaculaire qui transcende
+              les barrières linguistiques.
+            </p>
+          </div>
+          <div class="bloc-video-fixe">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/Lnd9f8n3_Wc"
+                title="Mariza"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="legende-video">
+              <strong>Ó Gente da Minha Terra</strong>
+              <em
+                >Le moment où le Fado devient un cri collectif et universel.</em
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="artiste-presentation">
+          <div class="texte-artiste">
+            <h3>Amália Rodrigues : La Reine</h3>
+            <p>
+              Amália a révolutionné le fado en y introduisant la grande poésie.
+              Son interprétation, d'une profondeur abyssale, a défini les canons
+              du genre pour l'éternité, faisant de sa voix l'emblème même du
+              Portugal.
+            </p>
+          </div>
+          <div class="bloc-video-fixe">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/Ssh6VfD9o48"
+                title="Amália Rodrigues"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="legende-video">
+              <strong>Com que voz (Avec quelle voix)</strong>
+              <em
+                >La rencontre historique entre la poésie de Camões et la voix
+                d'Amália.</em
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-comparative">
+        <h2>Hier & Aujourd'hui : un fado qui fait évoluer ses racines</h2>
+        <div class="comparatif-video-duo">
+          <div class="video-duo-box">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/Ssh6VfD9o48"
+                title="Amália"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="legende-video">
+              <strong>Estranha Forma de Vida (Amália)</strong>
+              <em>L'originale : une leçon d'ascèse et de profondeur.</em>
+            </div>
+          </div>
+          <div class="video-duo-box">
+            <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/Q49sHB3pYjg"
+                title="Mariza"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="legende-video">
+              <strong>Estranha Forma de Vida (Mariza)</strong>
+              <em>La relecture : une intensité physique moderne.</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="grille-comparaison">
+          <div class="colonne-evol">
+            <span class="label-epoque">L'Héritage d'Amália</span>
+            <p>
+              Une interprétation solennelle, marquée par une immobilité sacrée
+              et une voix de poitrine riche. Elle a fixé les codes du Fado
+              classique.
+            </p>
+          </div>
+          <div class="colonne-evol">
+            <span class="label-epoque">L'Audace de Mariza</span>
+            <p>
+              Une vitalité organique qui s'autorise des contrastes violents,
+              prouvant que le Fado peut dialoguer avec notre époque actuelle.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+    </footer>
+  </body>
+</html>

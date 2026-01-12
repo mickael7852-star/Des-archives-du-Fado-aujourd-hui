@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Le Fado au fil du temps : archives visuelles</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- Styles spécifiques à la page archives-papiers.html --- */
+
+      /* En-tête fixe */
+      .header-fixe {
+        width: 100%;
+        height: 450px; /* Hauteur de la bannière fixe */
+        overflow: hidden;
+      }
+
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Centrer l'image si elle ne remplit pas tout */
+      }
+
+      /* Titres de section */
+      h1,
+      h2 {
+        text-align: left !important;
+        margin-left: 8% !important; /* Retrait pour la respiration */
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      h1 {
+        margin-top: 50px;
+        font-size: 2.8em;
+      }
+      h2 {
+        margin-top: 60px;
+        font-size: 2.2em;
+      }
+
+      /* Zone de texte introductive */
+      .intro-texte {
+        max-width: 850px;
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-bottom: 60px;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: left;
+        color: #444;
+      }
+
+      /* Conteneur de la frise chronologique */
+      .frise-chronologique {
+        max-width: 1000px;
+        margin: 0 auto 80px auto;
+        padding: 20px;
+      }
+
+      /* Chaque événement sur la frise */
+      .evenement-fado {
+        display: flex;
+        align-items: center;
+        margin-bottom: 80px;
+        position: relative;
+      }
+
+      /* Les points sur la frise */
+      .evenement-fado::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background-color: #7c3f2a;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        box-shadow: 0 0 0 5px rgba(124, 63, 42, 0.2);
+      }
+
+      /* Alternance gauche/droite */
+      .evenement-fado:nth-child(even) {
+        flex-direction: row-reverse; /* Image à droite, texte à gauche */
+      }
+
+      .annee-fado {
+        width: 15%;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #7c3f2a;
+        position: relative; /* Pour positionner l'année par rapport à la ligne */
+        z-index: 1;
+      }
+
+      .description-fado {
+        flex-grow: 1;
+        padding: 20px 40px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        margin: 0 30px; /* Espace entre texte et image/année */
+        max-width: 40%; /* Pour éviter que le texte ne prenne toute la largeur */
+      }
+
+      .description-fado h3 {
+        color: #5e2f1f;
+        margin-top: 0;
+        font-size: 1.5em;
+        text-align: left;
+      }
+
+      .description-fado p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        text-align: left;
+      }
+
+      .image-frise {
+        width: 35%; /* Laisser de la place pour l'année et la ligne */
+        height: 300px; /* Hauteur fixe pour les images de la frise */
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-frise img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Média queries pour adapter la frise sur les petits écrans */
+      @media (max-width: 900px) {
+        .evenement-fado {
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 60px;
+        }
+
+        .evenement-fado:nth-child(even) {
+          flex-direction: column; /* Pas de row-reverse sur mobile */
+        }
+
+        .frise-chronologique::before {
+          left: 40px; /* Décaler la ligne sur la gauche */
+          transform: translateX(0);
+        }
+
+        .evenement-fado::before {
+          left: 40px; /* Décaler les points */
+          transform: translate(-50%, -50%);
+        }
+
+        .annee-fado {
+          width: auto;
+          text-align: left;
+          margin-left: 80px; /* Pour aligner avec le texte */
+          margin-bottom: 20px;
+          font-size: 1.6em;
+        }
+
+        .description-fado,
+        .image-frise {
+          max-width: none;
+          width: calc(100% - 80px); /* Ajuster la largeur */
+          margin-left: 80px; /* Alignement */
+          margin-right: 20px;
+        }
+
+        .image-frise {
+          height: 250px;
+          margin-top: 20px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2.2em;
+          margin-top: 30px;
+        }
+        h2 {
+          font-size: 1.8em;
+          margin-top: 40px;
+        }
+        .intro-texte {
+          font-size: 1em;
+          margin-bottom: 40px;
+        }
+        .header-fixe {
+          height: 300px;
+        }
+
+        .annee-fado {
+          font-size: 1.4em;
+          margin-left: 60px;
+        }
+        .description-fado,
+        .image-frise {
+          width: calc(100% - 60px);
+          margin-left: 60px;
+          padding: 15px 25px;
+        }
+        .image-frise {
+          height: 200px;
+        }
+        .description-fado h3 {
+          font-size: 1.3em;
+        }
+        .description-fado p {
+          font-size: 0.95em;
+        }
+        .frise-chronologique::before,
+        .evenement-fado::before {
+          left: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img src="images/PeintureFADO.png" alt="Archives visuelles du Fado" />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li>
+              <a href="rue.html">De la rue à la scène</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li>
+              <a href="ton.html">Le ton du Fado : l'art de la Saudade</a>
+            </li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li>
+              <a href="guitare.html">La guitarra: emblème du Fado</a>
+            </li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : petit voyage à travers l'histoire des
+                images
+              </a>
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : une immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Le Fado au fil du temps : petite frise visuelle</h1>
+      <div class="intro-texte">
+        <p>
+          Plongez dans l'histoire du Fado à travers une sélection d'images
+          d'archives. Chaque photographie, chaque document témoigne d'une
+          époque, d'un lieu, d'une émotion qui a forgé ce chant si emblématique
+          du Portugal. Suivez les étapes clés de son évolution, des tavernes
+          populaires aux grandes scènes internationales, et découvrez les
+          visages qui ont donné vie à la Saudade.
+        </p>
+      </div>
+
+      <div class="frise-chronologique">
+        <div class="evenement-fado">
+          <div class="annee-fado">Début XIXe</div>
+          <div class="description-fado">
+            <h3>Les origines modestes</h3>
+            <p>
+              Le Fado naît dans les quartiers populaires de Lisbonne, les
+              tavernes et les ports, parmi les marins, les ouvriers et les gens
+              du peuple. C'est un chant spontané, exprimant la dureté de la vie,
+              les amours et la saudade. Les premières traces sont souvent liées
+              à des ambiances festives et improvisées.
+            </p>
+          </div>
+          <div class="image-frise">
+            <img
+              src="images/placeholder-fado-19e.jpg"
+              alt="Scène de taverne du 19e siècle"
+            />
+          </div>
+        </div>
+
+        <div class="evenement-fado">
+          <div class="annee-fado">Fin XIXe - Début XXe</div>
+          <div class="description-fado">
+            <h3>Les premières "Casas de Fado"</h3>
+            <p>
+              Le Fado se professionnalise et se structure avec l'apparition des
+              premières "Casas de Fado", des lieux dédiés où les chanteurs et
+              musiciens se produisent régulièrement. C'est à cette période que
+              les premières grandes figures commencent à émerger, jetant les
+              bases du style que nous connaissons.
+            </p>
+          </div>
+          <div class="image-frise">
+            <img
+              src="images/placeholder-casa-fado.jpg"
+              alt="Ancienne Casa de Fado"
+            />
+          </div>
+        </div>
+
+        <div class="evenement-fado">
+          <div class="annee-fado">Années 1930-1950</div>
+          <div class="description-fado">
+            <h3>L'Âge d'Or et Amália Rodrigues</h3>
+            <p>
+              Cette période est marquée par l'explosion du Fado à
+              l'international, notamment grâce à la voix d'Amália Rodrigues, qui
+              devient l'icône planétaire du genre. Le Fado s'installe sur les
+              grandes scènes, à la radio et au cinéma, touchant un public bien
+              au-delà des frontières portugaises.
+            </p>
+          </div>
+          <div class="image-frise">
+            <img
+              src="images/placeholder-amalia.jpg"
+              alt="Amália Rodrigues en concert"
+            />
+          </div>
+        </div>
+
+        <div class="evenement-fado">
+          <div class="annee-fado">Années 1970-1990</div>
+          <div class="description-fado">
+            <h3>Le Fado après la Révolution</h3>
+            <p>
+              Après la Révolution des Œillets, le Fado traverse une période de
+              renouvellement. De nouveaux artistes émergent, explorant de
+              nouvelles sonorités tout en respectant la tradition. Le genre
+              continue d'évoluer, prouvant sa capacité à s'adapter et à rester
+              pertinent.
+            </p>
+          </div>
+          <div class="image-frise">
+            <img
+              src="images/placeholder-fado-moderne.jpg"
+              alt="Fadista des années 70-90"
+            />
+          </div>
+        </div>
+
+        <div class="evenement-fado">
+          <div class="annee-fado">Années 2000</div>
+          <div class="description-fado">
+            <h3>Reconnaissance UNESCO et Fado Contemporain</h3>
+            <p>
+              En 2011, le Fado est inscrit au Patrimoine Culturel Immatériel de
+              l'Humanité par l'UNESCO, une reconnaissance mondiale de son
+              importance. De nouvelles générations de fadistas continuent de
+              faire vivre le Fado, le modernisant tout en préservant son
+              essence.
+            </p>
+          </div>
+          <div class="image-frise">
+            <img
+              src="images/placeholder-fado-unesco.jpg"
+              alt="Symbole UNESCO et Fado contemporain"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+      <p>
+        Contact :
+        <a href="mailto:ton.email@exemple.com">ton.email@exemple.com</a>
+      </p>
+    </footer>
+  </body>
+</html>

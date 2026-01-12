@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Échos du Fado - Archives du Fado</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- AJUSTEMENTS DE MISE EN PAGE --- */
+
+      nav a {
+        font-size: 16px !important;
+      }
+
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2 {
+        text-align: left !important;
+        margin-left: 8% !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      h1 {
+        margin-top: 50px;
+        font-size: 2.8em;
+      }
+      h2 {
+        margin-top: 60px;
+        font-size: 2.2em;
+        border-bottom: 1px solid rgba(124, 63, 42, 0.2);
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+
+      .section-texte {
+        max-width: 850px;
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: left;
+        color: #444;
+      }
+
+      /* --- GRILLE HARMONIEUSE MIXTE --- */
+      .immersion-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 84%;
+        max-width: 1100px;
+        margin: 50px auto;
+      }
+
+      @media (min-width: 900px) {
+        .immersion-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .media-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .media-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .photo-container {
+        height: 300px;
+        overflow: hidden;
+        cursor: pointer;
+        display: block;
+      }
+
+      .photo-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .photo-container:hover img {
+        transform: scale(1.1);
+      }
+
+      /* --- STYLE AJUSTÉ PHOTO PLEINE IMAGE --- */
+      .full-image-block {
+        width: 84%;
+        max-width: 1100px;
+        margin: 50px auto;
+      }
+
+      .full-image-container {
+        width: 100%;
+        height: 400px; /* Taille réduite pour ne pas être trop grande */
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+        display: block;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .full-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .full-image-container:hover img {
+        transform: scale(1.1);
+      }
+
+      .legende-speciale {
+        margin-top: 20px;
+        font-style: italic;
+        color: #555;
+        border-left: 4px solid #7c3f2a;
+        padding-left: 20px;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .media-info {
+        padding: 20px;
+      }
+      .media-info h3 {
+        margin: 0 0 10px 0;
+        color: #7c3f2a;
+      }
+      .media-info p {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .listen-link {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #7c3f2a;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        transition: background 0.3s;
+      }
+
+      .listen-link:hover {
+        background-color: #5a2e1f;
+      }
+
+      /* --- LIGHTBOX --- */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .lightbox:target {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 85%;
+        max-height: 75%;
+        border: 2px solid #7c3f2a;
+      }
+      .lightbox .copyright {
+        color: #ddd;
+        margin-top: 20px;
+        font-style: italic;
+      }
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 50px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img
+        src="images/Bandeau échos du fado.png"
+        alt="Rues de Lisbonne le soir"
+      />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li><a href="rue.html">De la rue à la scène</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li><a href="ton.html">Le ton du Fado : l'art de la Saudade</a></li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li><a href="guitare.html">La guitarra: emblème du Fado</a></li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li><a href="archives-papiers.html">Le Fado au fil du temps</a></li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Échos du Fado : Une immersion sonore</h1>
+
+      <div class="section-texte">
+        <p>
+          Écouter le Fado, c'est accepter de faire un voyage immobile dans les
+          ruelles pavées de l'Alfama ou de Mouraria. Ce n'est pas seulement une
+          musique, c'est un environnement : le craquement d'une chaise en bois
+          dans une taverne, le silence religieux qui s'installe quand les
+          lumières s'éteignent, et enfin, ce cri du cœur qui s'élève.
+        </p>
+        <p>
+          Découvrez ci-dessous une sélection d'extraits, de performances
+          iconiques et d'instants capturés, pour comprendre l'âme de ce
+          patrimoine mondial de l'UNESCO.
+        </p>
+      </div>
+
+      <div class="immersion-grid">
+        <div class="media-card">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/P6_S9U2X734"
+              title="Amália Rodrigues"
+            ></iframe>
+          </div>
+          <div class="media-info">
+            <h3>L'Incontournable Amália</h3>
+            <p>
+              Amália Rodrigues, la "Reine du Fado", interprétant
+              <i>Estranha Forma de Vida</i>. Une leçon d'interprétation où la
+              tenue noire et le châle deviennent des icônes.
+            </p>
+            <a
+              href="https://www.youtube.com/watch?v=P6_S9U2X734"
+              target="_blank"
+              class="listen-link"
+              >Voir sur YouTube</a
+            >
+          </div>
+        </div>
+
+        <div class="media-card">
+          <a href="#photo-rue" class="photo-container">
+            <img src="images/rue-fado.jpg" alt="Ruelle de l'Alfama" />
+          </a>
+          <div class="media-info">
+            <h3>Le Théâtre de la Rue</h3>
+            <p>
+              C'est ici, dans l'intimité des quartiers populaires de Lisbonne,
+              que le Fado trouve sa résonance la plus authentique.
+            </p>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/p8p-L8W2uTo"
+              title="Fado de Rue"
+            ></iframe>
+          </div>
+          <div class="media-info">
+            <h3>Fado Vadio (Fado Amateur)</h3>
+            <p>
+              Une immersion dans une "Casa de Fado" traditionnelle où les
+              chanteurs se succèdent dans une ambiance chaleureuse et feutrée.
+            </p>
+            <a
+              href="https://open.spotify.com"
+              target="_blank"
+              class="listen-link"
+              >Écouter sur Spotify</a
+            >
+          </div>
+        </div>
+
+        <div class="media-card">
+          <a href="#photo-chant" class="photo-container">
+            <img src="images/fadista-traditionnel.jpg" alt="Chanteur de fado" />
+          </a>
+          <div class="media-info">
+            <h3>L'Élégance de la Tradition</h3>
+            <p>
+              Le port altier, la main posée sur le cœur ou sur la hanche : la
+              posture du fadiste est une part entière de la transmission de
+              l'émotion.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-image-block">
+        <a href="#photo-full" class="full-image-container">
+          <img src="images/Ruelle instru.jpg" alt="Vue de Lisbonne" />
+        </a>
+        <div class="legende-speciale">
+          Sur cette image, nous observons la ville de Lisbonne s'illuminer au
+          crépuscule. C'est à cet instant précis que les premières notes de
+          guitare s'élèvent des tavernes de l'Alfama, marquant le début de la
+          vie nocturne dédiée au Fado.
+        </div>
+      </div>
+
+      <h2>Où approfondir votre écoute ?</h2>
+      <div class="section-texte">
+        <p>
+          Pour prolonger l'immersion, nous vous conseillons de visiter les
+          archives sonores officielles et les plateformes de streaming :
+        </p>
+        <ul>
+          <li>
+            <strong>Musée du Fado (Archives) :</strong> Une collection unique
+            d'enregistrements historiques.
+          </li>
+          <li>
+            <strong>Spotify / Deezer :</strong> Recherchez les playlists "Fado
+            Classics" pour découvrir les voix de Mariza ou Ana Moura.
+          </li>
+          <li>
+            <strong>YouTube :</strong> Les chaînes dédiées aux "Casas de Fado"
+            offrent des captations en direct.
+          </li>
+        </ul>
+      </div>
+
+      <div id="photo-rue" class="lightbox">
+        <a href="#" class="close-btn">×</a>
+        <img src="images/rue-fado.jpg" alt="Rue" />
+        <p class="copyright">
+          © 2025 — Projet Fado | L'atmosphère des rues lisboètes
+        </p>
+      </div>
+
+      <div id="photo-chant" class="lightbox">
+        <a href="#" class="close-btn">×</a>
+        <img src="images/fadista-traditionnel.jpg" alt="Chant" />
+        <p class="copyright">
+          © 2025 — Projet Fado | Fadista en tenue de scène classique
+        </p>
+      </div>
+
+      <div id="photo-full" class="lightbox">
+        <a href="#" class="close-btn">×</a>
+        <img src="images/Ruelle instru.jpg" alt="Lisbonne" />
+        <p class="copyright">
+          © 2025 — Projet Fado | Vue nocturne des quartiers du Fado
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>La Viola et autres instruments - Archives du Fado</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/LOGO.png" />
+    <style>
+      /* --- AJUSTEMENTS DE MISE EN PAGE --- */
+
+      nav a {
+        font-size: 16px !important;
+      }
+
+      .header-fixe {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+      }
+
+      .header-fixe img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2 {
+        text-align: left !important;
+        margin-left: 8% !important;
+        color: #7c3f2a;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      h1 {
+        margin-top: 50px;
+        font-size: 2.8em;
+      }
+      h2 {
+        margin-top: 60px;
+        font-size: 2.2em;
+      }
+
+      .section-texte {
+        max-width: 850px;
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-size: 1.15rem;
+        text-align: left;
+        color: #444;
+      }
+
+      /* --- EFFETS SUR LES IMAGES --- */
+      .zone-image-archive {
+        width: 100%;
+        height: 350px; /* Légèrement réduit pour en faire tenir 3 */
+        background-color: rgba(124, 63, 42, 0.05);
+        border: 1px solid rgba(124, 63, 42, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .zone-image-archive img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .zone-image-archive:hover img {
+        transform: scale(1.1);
+      }
+
+      /* GRILLE À 3 COLONNES */
+      .image-grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 84%;
+        max-width: 1100px;
+        margin: 50px auto;
+      }
+
+      @media (min-width: 900px) {
+        .image-grid-3 {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+
+      /* --- SYSTÈME DE VISIONNEUSE (LIGHTBOX) --- */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .lightbox:target {
+        display: flex;
+      }
+
+      .lightbox img {
+        max-width: 85%;
+        max-height: 75%;
+        border: 2px solid #7c3f2a;
+      }
+
+      .lightbox .copyright {
+        color: #ddd;
+        margin-top: 20px;
+        font-family: "Segoe UI", sans-serif;
+        font-style: italic;
+        text-align: center;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 50px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header-fixe">
+      <img
+        src="images/Bandeau la viola.png"
+        alt="L'accompagnement instrumental du Fado"
+      />
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><strong>Accueil</strong></a>
+        </li>
+        <li>
+          <a href="histoire.html"><strong>Histoire du Fado</strong></a>
+          <ul>
+            <li><a href="origines.html">Les origines du Fado</a></li>
+            <li><a href="populaire.html">Le Fado populaire de Lisbonne</a></li>
+            <li><a href="rue.html">De la rue à la scène</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="poésie.html"><strong>Poésie et Émotions</strong></a>
+          <ul>
+            <li><a href="ton.html">Le ton du Fado : l'art de la Saudade</a></li>
+            <li>
+              <a href="rôle.html">Le rôle du chant et de l'interprétation</a>
+            </li>
+            <li><a href="grandes.html">Les grandes voix du Fado</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="instruments.html"><strong>Les Instruments</strong></a>
+          <ul>
+            <li><a href="guitare.html">La guitarra: emblème du Fado</a></li>
+            <li>
+              <a href="viola.html"
+                >La viola et les autres instruments d'accompagnement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="archives.html"><strong>Archives et Patrimoine</strong></a>
+          <ul>
+            <li>
+              <a href="archives-papiers.html"
+                >Le Fado au fil du temps : petit voyage à travers l'histoire des
+                images</a
+              >
+            </li>
+            <li>
+              <a href="archives-sonores.html"
+                >Échos du Fado : une immersion sonore</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="préservation.html"
+            ><strong>Préservation de la mémoire</strong></a
+          >
+          <ul>
+            <li><a href="images.html">Objets et costumes des fadistas</a></li>
+            <li><a href="musée.html">Musée du Fado, Lisbonne</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="sources.html"><strong>Sources / Contact</strong></a>
+          <ul>
+            <li><a href="bibliographie.html">Bibliographie</a></li>
+            <li><a href="liens.html">Liens utiles</a></li>
+            <li><a href="contact.html">Me contacter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>La Viola et les instruments d'accompagnement</h1>
+
+      <div class="section-texte">
+        <p>
+          Si la Guitarra Portuguesa attire tous les regards par ses mélodies
+          scintillantes, elle ne pourrait s'exprimer pleinement sans le soutien
+          indispensable de la <strong>Viola de Fado</strong>. Contrairement à ce
+          que son nom suggère en français, la <i>viola</i> n'est pas un alto,
+          mais une guitare classique à cordes de nylon ou d'acier. Son rôle est
+          fondamental : elle assure la "batida" (le rythme) et la structure
+          harmonique sur laquelle repose le chant et les envolées de la
+          guitarra.
+        </p>
+        <p>
+          Le "violetista" (joueur de viola) utilise souvent des lignes de basses
+          descendantes et des contre-chants dans les registres graves pour
+          répondre à la voix du fadiste. Cette interaction crée une profondeur
+          sonore qui donne au Fado toute sa solennité et sa force émotionnelle.
+        </p>
+      </div>
+
+      <div class="image-grid-3">
+        <a href="#photo1" class="zone-image-archive">
+          <img src="images/viola-classique.jpg" alt="La Viola de Fado" />
+        </a>
+        <a href="#photo2" class="zone-image-archive">
+          <img src="images/basse-fado.jpg" alt="Le Baixo" />
+        </a>
+        <a href="#photo3" class="zone-image-archive">
+          <img src="images/trio-instrumental.jpg" alt="Le trio traditionnel" />
+        </a>
+      </div>
+
+      <div class="section-texte">
+        <h2>Le Baixo et les évolutions modernes</h2>
+        <p>
+          Depuis le milieu du XXe siècle, un troisième instrument est venu
+          compléter le duo traditionnel : la <strong>Guitare Basse</strong> (ou
+          <i>Baixo</i>). Dans le Fado classique, on utilise souvent une basse
+          acoustique à quatre cordes qui vient souligner les fondamentales et
+          donner une assise plus ronde à l'ensemble.
+        </p>
+        <p>
+          Aujourd'hui, bien que le trio "Guitarra, Viola, Baixo" reste la norme
+          académique, le Fado contemporain s'ouvre parfois à d'autres sonorités
+          comme le violoncelle, le piano ou même l'accordéon, tout en veillant à
+          préserver cette sobriété caractéristique qui permet à la poésie du
+          texte de rester au premier plan. L'équilibre entre ces instruments est
+          un art de l'écoute et de la retenue, où chaque note doit servir
+          l'émotion pure de la <i>Saudade</i>.
+        </p>
+      </div>
+
+      <div id="photo1" class="lightbox">
+        <a href="#" class="close-btn">&times;</a>
+        <img src="images/viola-classique.jpg" alt="Viola" />
+        <p class="copyright">
+          © 2025 — Projet Fado | La Viola de Fado : rythme et harmonie
+        </p>
+      </div>
+
+      <div id="photo2" class="lightbox">
+        <a href="#" class="close-btn">&times;</a>
+        <img src="images/basse-fado.jpg" alt="Basse" />
+        <p class="copyright">
+          © 2025 — Projet Fado | La guitare basse acoustique dans le Fado
+        </p>
+      </div>
+
+      <div id="photo3" class="lightbox">
+        <a href="#" class="close-btn">&times;</a>
+        <img src="images/trio-instrumental.jpg" alt="Trio" />
+        <p class="copyright">
+          © 2025 — Projet Fado | Trio instrumental : Guitarra, Viola et Baixo
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 — Projet sur le Fado | Réalisé dans le cadre universitaire</p>
+    </footer>
+  </body>
+</html>
